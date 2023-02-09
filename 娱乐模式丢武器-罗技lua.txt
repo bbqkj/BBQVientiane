@@ -1,0 +1,57 @@
+--65535/1920
+wide = 34
+--65535/1080
+high = 61
+
+roleX1 = 124 * wide
+roleX2 = 226 * wide
+roleY = 247 * high
+useX = 1643 * wide
+useY = 940  * high
+armsX = 1779 * wide
+armsY = 912 * high
+armsY2 = 617 *  high
+function OnEvent(event, arg)
+    if event == "MOUSE_BUTTON_PRESSED" and arg == 4 then
+      OutputLogMessage("Event: "..event.." Arg: "..arg.."\n")
+      throw(roleX1)
+      throw(roleX2)
+    end
+end
+
+function throw(X) 
+  PressAndReleaseKey("H")
+  Sleep(100)
+  MoveMouseTo(X, roleY )
+  Sleep(10)
+  PressMouseButton(1)
+  ReleaseMouseButton(1)
+  Sleep(30)
+  MoveMouseTo(useX, useY)
+  Sleep(10)
+  PressMouseButton(1)
+  ReleaseMouseButton(1)
+  Sleep(100)
+  PressAndReleaseKey("Tab")
+  Sleep(200)
+  MoveMouseTo(armsX , armsY )
+  Sleep(100)
+  PressMouseButton(3)
+  ReleaseMouseButton(3)
+  Sleep(200)
+  MoveMouseTo(armsX , armsY +100 * high)
+  Sleep(10)
+  PressMouseButton(3)
+  ReleaseMouseButton(3)
+  Sleep(10)
+  MoveMouseTo(armsX , armsY2)
+  Sleep(10)
+  PressMouseButton(3)
+  ReleaseMouseButton(3)
+  Sleep(200)
+  PressMouseButton(3)
+  ReleaseMouseButton(3)
+  Sleep(10)
+  PressAndReleaseKey("Tab")
+  Sleep(30)
+end
